@@ -6,11 +6,14 @@ const matchesPlayedPerYear = require("./matchesPlayedPerYear")
 const matchesWonPerTeamPerYear = require("./matchesWonPerTeamPerYear");
 const extraRunsConcededPerTeam2016 = require("./extraRunsConcededPerTeam2016");
 const top10EconomicalBowlers2015 = require("./top10EconomicalBowlers2015");
+const teamsWonTossMatch = require("./teamsWonTossMatch");
+
 
 const outputProblem1 = "../public/output/matchesPerYear.json"
 const outputProblem2 = "../public/output/matchesWonPerTeam.json"
 const outputProblem3 = "../public/output/extraRuns2016.json"
 const outputProblem4 = "../public/output/economicalBowlers2015.json"
+const outputProblem5 = "../public/output/teamsWonTossMatch.json"
 
 function main() {
     csv()
@@ -23,18 +26,18 @@ function main() {
                     let result2 = matchesWonPerTeamPerYear(matches)
                     let result3 = extraRunsConcededPerTeam2016(matches, deliveries)
                     let result4 = top10EconomicalBowlers2015(matches, deliveries)
-
-
-                    convertAndSave(result1, result2, result3, result4)
+                    let result5 = teamsWonTossMatch(matches)
+                    convertAndSave(result1, result2, result3, result4, result5)
                 })
         })
 }
 
-function convertAndSave(data1, data2, data3, data4) {
+function convertAndSave(data1, data2, data3, data4, data5) {
     data1 = JSON.stringify(data1)
     data2 = JSON.stringify(data2)
     data3 = JSON.stringify(data3)
     data4 = JSON.stringify(data4)
+    data5 = JSON.stringify(data5)
     fs.writeFile(outputProblem1, data1, 'utf8', (error) => {
         if (error) {
             return error
@@ -51,6 +54,11 @@ function convertAndSave(data1, data2, data3, data4) {
         }
     })
     fs.writeFile(outputProblem4, data4, 'utf8', (error) => {
+        if (error) {
+            return error
+        }
+    })
+    fs.writeFile(outputProblem5, data5, 'utf8', (error) => {
         if (error) {
             return error
         }
