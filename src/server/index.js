@@ -23,17 +23,18 @@ function main() {
                     let result2 = matchesWonPerTeamPerYear(matches)
                     let result3 = extraRunsConcededPerTeam2016(matches, deliveries)
                     let result4 = top10EconomicalBowlers2015(matches, deliveries)
-                    console.log(result4)
 
-                    convertAndSave(result1, result2, result3)
+
+                    convertAndSave(result1, result2, result3, result4)
                 })
         })
 }
 
-function convertAndSave(data1, data2, data3) {
+function convertAndSave(data1, data2, data3, data4) {
     data1 = JSON.stringify(data1)
     data2 = JSON.stringify(data2)
     data3 = JSON.stringify(data3)
+    data4 = JSON.stringify(data4)
     fs.writeFile(outputProblem1, data1, 'utf8', (error) => {
         if (error) {
             return error
@@ -45,6 +46,11 @@ function convertAndSave(data1, data2, data3) {
         }
     })
     fs.writeFile(outputProblem3, data3, 'utf8', (error) => {
+        if (error) {
+            return error
+        }
+    })
+    fs.writeFile(outputProblem4, data4, 'utf8', (error) => {
         if (error) {
             return error
         }
