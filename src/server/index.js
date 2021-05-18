@@ -1,6 +1,7 @@
 const csv = require("csvtojson");
 const matchesFilePath = "../data/matches.csv"
 const deliveriesFilePath = "../data/deliveries.csv"
+const matchesPlayedPerYear = require("./matchesPlayedPerYear")
 
 function main() {
     csv()
@@ -9,8 +10,9 @@ function main() {
             csv()
                 .fromFile(deliveriesFilePath)
                 .then((deliveries) => {
-                    console.log(matches[0],deliveries[0]);
+                    console.log(matchesPlayedPerYear(matches))
                 })
         })
 }
+
 main()
