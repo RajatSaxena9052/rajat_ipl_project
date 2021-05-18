@@ -6,6 +6,7 @@ const matchesPlayedPerYear = require("./matchesPlayedPerYear")
 const matchesWonPerTeamPerYear = require("./matchesWonPerTeamPerYear");
 
 const path1 = "../public/output/matchesPerYear.json"
+const path2 = "../public/output/matchesWonPerTeam.json"
 
 function main() {
     csv()
@@ -16,21 +17,23 @@ function main() {
                 .then((deliveries) => {
                     let result1 = matchesPlayedPerYear(matches)
                     let result2 = matchesWonPerTeamPerYear(matches)
-                    console.log(result2)
-                    convertAndSave(result1)
+                    //console.log(result2)
+                    convertAndSave(result1, result2)
                 })
         })
 }
-function convertAndSave(data) {
-    data = JSON.stringify(data)
-    fs.writeFile(path1, data, 'utf8' , (e) => {
-        if(e){
-            return e
+function convertAndSave(data1, data2) {
+    data1 = JSON.stringify(data1)
+    data2 = JSON.stringify(data2)
+    fs.writeFile(path1, data1, 'utf8', (error) => {
+        if (error) {
+            return error
         }
-    })/*.writeFile(path1, data, 'utf8' , (e) => {
-        if(e){
-            return e
+    })
+    fs.writeFile(path2, data2, 'utf8', (error) => {
+        if (error) {
+            return error
         }
-    })*/
+    })
 }
 main()
