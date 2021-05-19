@@ -11,6 +11,7 @@ const teamsWonTossMatch = require("./teamsWonTossMatch");
 const playerOfMatch = require("./playerOfMatch")
 const batsmanStrikeRate = require("./batsmanStrikeRate")
 const dismissedPlayer = require("./dismissedPlayer")
+const superOver = require("./superOver")
 
 const outputProblem1 = "../public/output/matchesPerYear.json"
 const outputProblem2 = "../public/output/matchesWonPerTeam.json"
@@ -20,6 +21,7 @@ const outputProblem5 = "../public/output/teamsWonTossMatch.json"
 const outputProblem6 = "../public/output/playerOfMatch.json"
 const outputProblem7 = "../public/output/strikeRate.json"
 const outputProblem8 = "../public/output/highestDismissedPlayer.json"
+const outputProblem9 = "../public/output/bestSuperOverBowler.json"
 
 function main() {
     csv()
@@ -37,13 +39,14 @@ function main() {
                     let result6 = playerOfMatch(matches)
                     let result7 = batsmanStrikeRate(matches, deliveries)
                     let result8 = dismissedPlayer(deliveries)
+                    let result9 = superOver(deliveries)
 
-                    convertAndSave(result1, result2, result3, result4, result5, result6, result7, result8)
+                    convertAndSave(result1, result2, result3, result4, result5, result6, result7, result8, result9)
                 })
         })
 }
 
-function convertAndSave(data1, data2, data3, data4, data5, data6, data7, data8) {
+function convertAndSave(data1, data2, data3, data4, data5, data6, data7, data8, data9) {
 
     data1 = JSON.stringify(data1)
     data2 = JSON.stringify(data2)
@@ -53,6 +56,7 @@ function convertAndSave(data1, data2, data3, data4, data5, data6, data7, data8) 
     data6 = JSON.stringify(data6)
     data7 = JSON.stringify(data7)
     data8 = JSON.stringify(data8)
+    data9 = JSON.stringify(data9)
 
     fs.writeFile(outputProblem1, data1, 'utf8', (error) => {
         if (error) {
@@ -94,6 +98,12 @@ function convertAndSave(data1, data2, data3, data4, data5, data6, data7, data8) 
             return error
         }
     })
+    fs.writeFile(outputProblem9, data9, 'utf8', (error) => {
+        if (error) {
+            return error
+        }
+    })
 
 }
+
 main()
