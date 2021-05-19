@@ -2,14 +2,17 @@ function matchesPlayedPerYear(matchesArray) {
     if (matchesArray == undefined || matchesArray.length == 0 || Array.isArray(matchesArray) == false) {
         return {}
     }
-    let result = {}
+    let matchesPlayed = {}
+
     for (let matches of matchesArray) {
-        if (result[matches['season']] != undefined) {
-            result[matches['season']] += 1
+        let year = matches['season']
+
+        if (matchesPlayed[year] != undefined) {
+            matchesPlayed[year] += 1
         } else {
-            result[matches['season']] = 1
+            matchesPlayed[year] = 1
         }
     }
-    return result
+    return matchesPlayed
 }
 module.exports = matchesPlayedPerYear;

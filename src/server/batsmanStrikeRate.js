@@ -2,20 +2,23 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
     if (matchesArray == undefined || matchesArray.length == 0 || Array.isArray(matchesArray) == false || deliveriesArray == undefined || deliveriesArray.length == 0 || Array.isArray(deliveriesArray) == false) {
         return {}
     } else {
-        let year = {}
+        let years = {}
+
         for (let matches of matchesArray) {
-            if (year[matches["season"]] == undefined) {
-                year[matches["season"]] = [matches["id"]]
+            let year = matches["season"]
+            let matchId = matches["id"]
+
+            if (years[year] == undefined) {
+                years[year] = [matchId]
             } else {
-                year[matches["season"]].push(matches["id"])
+                years[year].push(matchId)
 
             }
         }
-        //console.log(year)
-        for (let season in year) {
+
+        for (let season in years) {
             let batsman = {}
-            let id = year[season][0]
-            //console.log(id)
+            let id = years[season][0]
 
             for (let deliveries of deliveriesArray) {
                 if (deliveries["match_id"] != id) {
@@ -25,9 +28,10 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
                     break;
                 }
             }
+            
             let name = Object.keys(batsman)[0]
-            //console.log(name, id, season)
-            for (let id of year[season]) {
+
+            for (let id of years[season]) {
                 for (let deliveries of deliveriesArray) {
                     if (deliveries["match_id"] == id && deliveries["batsman"] == name) {
                         batsman[name]["bowls"] += 1
@@ -36,10 +40,10 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
                 }
             }
             batsman[name]["strikeRate"] = ((batsman[name]["runs"] / batsman[name]["bowls"]) * 100).toFixed(3)
-            year[season] = batsman
+            years[season] = batsman
         }
 
-        return year
+        return years
     }
 }
 module.exports = batsmanStrikeRate;

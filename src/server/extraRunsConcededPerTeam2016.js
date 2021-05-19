@@ -8,7 +8,9 @@ function extraRunsConcededPerTeam2016(matchArray, deliveriesArray) {
                 matchId.add(match["id"])
             }
         }
+
         let extraRunsByTeams = {}
+
         for (let id of matchId) {
             for (let deliveries of deliveriesArray) {
                 if (deliveries['match_id'] == id) {

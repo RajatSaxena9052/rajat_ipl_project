@@ -8,6 +8,7 @@ function top10EconomicalBowlers2015(matchArray, deliveriesArray) {
                 matchId.add(match["id"])
             }
         }
+
         let bowlers = new Set()
         for (var id of matchId) {
             for (var deliveries of deliveriesArray) {
@@ -18,7 +19,6 @@ function top10EconomicalBowlers2015(matchArray, deliveriesArray) {
         }
 
         let economy = {};
-
         for (var bowler of bowlers) {
             let totalRuns = 0, bowls = 0
             for (let i of deliveriesArray) {
@@ -30,6 +30,7 @@ function top10EconomicalBowlers2015(matchArray, deliveriesArray) {
             bowls = bowls / 6
             economy[bowler] = Math.floor(totalRuns / bowls)
         }
+
         economy = Object.entries(economy).sort((a, b) => a[1] - b[1]).slice(0, 10).reduce((a, c) => {
             a[c[0]] = c[1]
             return a
