@@ -1,7 +1,7 @@
 const csv = require("csvtojson");
 const fs = require('fs');
-const matchesFilePath = "../data/matches.csv"
-const deliveriesFilePath = "../data/deliveries.csv"
+const matchesFilePath = "src/data/matches.csv"
+const deliveriesFilePath = "src/data/deliveries.csv"
 
 const matchesPlayedPerYear = require("./matchesPlayedPerYear")
 const matchesWonPerTeamPerYear = require("./matchesWonPerTeamPerYear");
