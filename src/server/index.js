@@ -2,6 +2,7 @@ const csv = require("csvtojson");
 const fs = require('fs');
 const matchesFilePath = "../data/matches.csv"
 const deliveriesFilePath = "../data/deliveries.csv"
+
 const matchesPlayedPerYear = require("./matchesPlayedPerYear")
 const matchesWonPerTeamPerYear = require("./matchesWonPerTeamPerYear");
 const extraRunsConcededPerTeam2016 = require("./extraRunsConcededPerTeam2016");
@@ -9,7 +10,7 @@ const top10EconomicalBowlers2015 = require("./top10EconomicalBowlers2015");
 const teamsWonTossMatch = require("./teamsWonTossMatch");
 const playerOfMatch = require("./playerOfMatch")
 const batsmanStrikeRate = require("./batsmanStrikeRate")
-
+const dismissedPlayer = require("./dismissedPlayer")
 
 const outputProblem1 = "../public/output/matchesPerYear.json"
 const outputProblem2 = "../public/output/matchesWonPerTeam.json"
@@ -18,6 +19,7 @@ const outputProblem4 = "../public/output/economicalBowlers2015.json"
 const outputProblem5 = "../public/output/teamsWonTossMatch.json"
 const outputProblem6 = "../public/output/playerOfMatch.json"
 const outputProblem7 = "../public/output/strikeRate.json"
+const outputProblem8 = "../public/output/highestDismissedPlayer.json"
 
 function main() {
     csv()
@@ -26,6 +28,7 @@ function main() {
             csv()
                 .fromFile(deliveriesFilePath)
                 .then((deliveries) => {
+
                     let result1 = matchesPlayedPerYear(matches)
                     let result2 = matchesWonPerTeamPerYear(matches)
                     let result3 = extraRunsConcededPerTeam2016(matches, deliveries)
@@ -33,12 +36,15 @@ function main() {
                     let result5 = teamsWonTossMatch(matches)
                     let result6 = playerOfMatch(matches)
                     let result7 = batsmanStrikeRate(matches, deliveries)
-                    convertAndSave(result1, result2, result3, result4, result5, result6, result7)
+                    let result8 = dismissedPlayer(deliveries)
+
+                    convertAndSave(result1, result2, result3, result4, result5, result6, result7, result8)
                 })
         })
 }
 
-function convertAndSave(data1, data2, data3, data4, data5, data6, data7) {
+function convertAndSave(data1, data2, data3, data4, data5, data6, data7, data8) {
+
     data1 = JSON.stringify(data1)
     data2 = JSON.stringify(data2)
     data3 = JSON.stringify(data3)
@@ -46,6 +52,8 @@ function convertAndSave(data1, data2, data3, data4, data5, data6, data7) {
     data5 = JSON.stringify(data5)
     data6 = JSON.stringify(data6)
     data7 = JSON.stringify(data7)
+    data8 = JSON.stringify(data8)
+
     fs.writeFile(outputProblem1, data1, 'utf8', (error) => {
         if (error) {
             return error
@@ -81,5 +89,11 @@ function convertAndSave(data1, data2, data3, data4, data5, data6, data7) {
             return error
         }
     })
+    fs.writeFile(outputProblem8, data8, 'utf8', (error) => {
+        if (error) {
+            return error
+        }
+    })
+
 }
 main()
