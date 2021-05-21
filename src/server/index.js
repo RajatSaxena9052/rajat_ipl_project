@@ -13,16 +13,6 @@ const batsmanStrikeRate = require("./batsmanStrikeRate")
 const dismissedPlayer = require("./dismissedPlayer")
 const superOver = require("./superOver")
 
-const outputProblem1 = "../public/output/matchesPerYear.json"
-const outputProblem2 = "../public/output/matchesWonPerTeam.json"
-const outputProblem3 = "../public/output/extraRuns2016.json"
-const outputProblem4 = "../public/output/economicalBowlers2015.json"
-const outputProblem5 = "../public/output/teamsWonTossMatch.json"
-const outputProblem6 = "../public/output/playerOfMatch.json"
-const outputProblem7 = "../public/output/strikeRate.json"
-const outputProblem8 = "../public/output/highestDismissedPlayer.json"
-const outputProblem9 = "../public/output/bestSuperOverBowler.json"
-
 function main() {
     csv()
         .fromFile(matchesFilePath)
@@ -58,50 +48,65 @@ function convertAndSave(data1, data2, data3, data4, data5, data6, data7, data8, 
     data8 = JSON.stringify(data8)
     data9 = JSON.stringify(data9)
 
-    fs.writeFile(outputProblem1, data1, 'utf8', (error) => {
+    fs.writeFile("src/public/output/matchesPerYear.json", data1, 'utf8', (error) => {
         if (error) {
             return error
         }
+        console.log("outputfile matchesPerYear.json is created")
     })
-    fs.writeFile(outputProblem2, data2, 'utf8', (error) => {
+    fs.writeFile("src/public/output/matchesWonPerTeam.json", data2, 'utf8', (error) => {
         if (error) {
             return error
         }
+        console.log("outputfile matchesWonPerTeam.json is created")
     })
-    fs.writeFile(outputProblem3, data3, 'utf8', (error) => {
+    fs.writeFile("src/public/output/extraRuns2016.json", data3, 'utf8', (error) => {
         if (error) {
             return error
         }
+        console.log("outputfile extraRuns2016.json is created")
+
     })
-    fs.writeFile(outputProblem4, data4, 'utf8', (error) => {
+    fs.writeFile("src/public/output/economicalBowlers2015.json", data4, 'utf8', (error) => {
         if (error) {
             return error
         }
+        console.log("outputfile economicalBowlers2015.json is created")
+
     })
-    fs.writeFile(outputProblem5, data5, 'utf8', (error) => {
+    fs.writeFile("src/public/output/teamsWonTossMatch.json", data5, 'utf8', (error) => {
         if (error) {
             return error
         }
+        console.log("outputfile teamsWonTossMatch.json is created")
+
     })
-    fs.writeFile(outputProblem6, data6, 'utf8', (error) => {
+    fs.writeFile("src/public/output/playerOfMatch.json", data6, 'utf8', (error) => {
         if (error) {
             return error
         }
+        console.log("outputfile playerOfMatch.json is created")
+
     })
-    fs.writeFile(outputProblem7, data7, 'utf8', (error) => {
+    fs.writeFile("src/public/output/strikeRate.json", data7, 'utf8', (error) => {
         if (error) {
             return error
         }
+        console.log("outputfile strikeRate.json is created")
+
     })
-    fs.writeFile(outputProblem8, data8, 'utf8', (error) => {
+    fs.writeFile("src/public/output/highestDismissedPlayer.json", data8, 'utf8', (error) => {
         if (error) {
             return error
         }
+        console.log("outputfile highestDismissedPlayer.json is created")
+
     })
-    fs.writeFile(outputProblem9, data9, 'utf8', (error) => {
+    fs.writeFile("src/public/output/bestSuperOverBowler.json", data9, 'utf8', (error) => {
         if (error) {
             return error
         }
+        console.log("outputfile bestSuperOverBowler.json is created")
     })
 
 }
