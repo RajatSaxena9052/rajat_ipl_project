@@ -18,9 +18,10 @@ function top10EconomicalBowlers2015(matchArray, deliveriesArray) {
             }
         }
 
-        let economy = {};
+        let economy = {}
         for (var bowler of bowlers) {
             let totalRuns = 0, bowls = 0
+
             for (let i of deliveriesArray) {
                 if (matchId.has(i["match_id"]) === true && i["bowler"] == bowler) {
                     totalRuns += parseInt(i["total_runs"])
@@ -39,4 +40,4 @@ function top10EconomicalBowlers2015(matchArray, deliveriesArray) {
         return economy
     }
 }
-module.exports = top10EconomicalBowlers2015;
+module.exports = top10EconomicalBowlers2015

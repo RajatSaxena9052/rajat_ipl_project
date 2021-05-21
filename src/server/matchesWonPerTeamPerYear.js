@@ -2,20 +2,24 @@ function matchesWonPerTeamPerYear(matchesArray) {
     if (matchesArray == undefined || matchesArray.length == 0 || Array.isArray(matchesArray) == false) {
         return {}
     } else {
-        let year = {};
+        let matchesWonPerTeamAndYear = {}
         for (let matches of matchesArray) {
-            if (year[matches['season']] != undefined) {
-                year[matches['season']].push(matches["winner"])
+            let matchSeason = matches['season']
+            let winnerTeamName = matches["winnerTeamName"]
+
+            if (matchesWonPerTeamAndYear[matchSeason] != undefined) {
+                matchesWonPerTeamAndYear[matchSeason].push(winnerTeamName)
             } else {
-                year[matches['season']] = [matches["winner"]]
+                matchesWonPerTeamAndYear[matchSeason] = [winnerTeamName]
             }
         }
-        for (var property in year) {
-            let teams = {};
-            year[property].forEach(s => teams[s] = (teams[s] || 0) + 1);
-            year[property] = teams;
+        for (var season in matchesWonPerTeamAndYear) {
+            let teams = {}
+
+            matchesWonPerTeamAndYear[season].forEach(s => teams[s] = (teams[s] || 0) + 1)
+            matchesWonPerTeamAndYear[season] = teams
         }
-        return year;
+        return matchesWonPerTeamAndYear
     }
 }
-module.exports = matchesWonPerTeamPerYear;
+module.exports = matchesWonPerTeamPerYear

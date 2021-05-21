@@ -8,7 +8,7 @@ function teamsWonTossMatch(matchArray) {
             teams.add(matches["team1"])
             teams.add(matches["team2"])
         }
-        let teamWon = {}
+        let teamsWon = {}
         for (var team of teams) {
             let count = 0
             for (var matches of matchArray) {
@@ -16,9 +16,9 @@ function teamsWonTossMatch(matchArray) {
                     count++
                 }
             }
-            teamWon[team] = count
+            teamsWon[team] = count
         }
-        return teamWon
+        return teamsWon
     }
 }
-module.exports = teamsWonTossMatch;
+module.exports = teamsWonTossMatch

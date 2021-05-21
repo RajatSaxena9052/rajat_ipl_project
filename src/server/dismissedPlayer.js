@@ -32,4 +32,4 @@ function dismissedPlayer(deliveriesArray) {
 
     }
 }
-module.exports = dismissedPlayer;
+module.exports = dismissedPlayer

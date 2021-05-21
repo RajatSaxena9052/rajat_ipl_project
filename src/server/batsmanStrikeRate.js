@@ -25,10 +25,10 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
                     continue
                 } else {
                     batsman[deliveries["batsman"]] = { "bowls": 0, "runs": 0 }
-                    break;
+                    break
                 }
             }
-            
+
             let name = Object.keys(batsman)[0]
 
             for (let id of years[season]) {
@@ -46,4 +46,4 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
         return years
     }
 }
-module.exports = batsmanStrikeRate;
+module.exports = batsmanStrikeRate

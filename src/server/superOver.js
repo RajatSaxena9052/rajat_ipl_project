@@ -21,19 +21,19 @@ function superOver(deliveriesArray) {
             }
         }
 
-        let minimumEconomy = null, bestBowler = "";
+        let minimumEconomy = null, bestBowler = ""
 
         for (let bowler in superOverMatchPlayer) {
             let runsGiven = superOverMatchPlayer[bowler]["runsGiven"]
             let overs = superOverMatchPlayer[bowler]["bowls"] / 6
-            let economy = runsGiven / overs
+            let calculatedEconomy = runsGiven / overs
 
             if (minimumEconomy == null) {
-                minimumEconomy = economy
+                minimumEconomy = calculatedEconomy
             }
-            else if (minimumEconomy > economy) {
-                minimumEconomy = economy
-                bestBowler = { "bowler": bowler, "economy": minimumEconomy }
+            else if (minimumEconomy > calculatedEconomy) {
+                minimumEconomy = calculatedEconomy
+                bestBowler = { "bowlerName": bowler, "economy": minimumEconomy }
             }
         }
 
