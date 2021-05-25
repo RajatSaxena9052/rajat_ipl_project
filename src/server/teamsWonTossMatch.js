@@ -1,5 +1,5 @@
 function teamsWonTossMatch(matchArray) {
-    if (matchArray == undefined || matchArray.length == 0 || Array.isArray(matchArray) == false) {
+    if (matchArray === undefined || matchArray.length === 0) {
         return {}
     }
     else {

@@ -1,5 +1,5 @@
 function superOver(deliveriesArray) {
-    if (deliveriesArray == undefined || deliveriesArray.length == 0 || Array.isArray(deliveriesArray) == false) {
+    if (deliveriesArray === undefined || deliveriesArray.length === 0) {
         return {}
     }
     else {

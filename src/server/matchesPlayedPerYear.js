@@ -1,5 +1,5 @@
 function matchesPlayedPerYear(matchesArray) {
-    if (matchesArray == undefined || matchesArray.length == 0 || Array.isArray(matchesArray) == false) {
+    if (matchesArray === undefined || matchesArray.length === 0) {
         return {}
     }
     let matchesPlayed = {}

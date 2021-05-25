@@ -1,11 +1,12 @@
 function matchesWonPerTeamPerYear(matchesArray) {
-    if (matchesArray == undefined || matchesArray.length == 0 || Array.isArray(matchesArray) == false) {
+    if (matchesArray === undefined || matchesArray.length === 0) {
         return {}
     } else {
         let matchesWonPerTeamAndYear = {}
+
         for (let matches of matchesArray) {
             let matchSeason = matches['season']
-            let winnerTeamName = matches["winnerTeamName"]
+            let winnerTeamName = matches["winner"]
 
             if (matchesWonPerTeamAndYear[matchSeason] != undefined) {
                 matchesWonPerTeamAndYear[matchSeason].push(winnerTeamName)
@@ -13,6 +14,7 @@ function matchesWonPerTeamPerYear(matchesArray) {
                 matchesWonPerTeamAndYear[matchSeason] = [winnerTeamName]
             }
         }
+
         for (var season in matchesWonPerTeamAndYear) {
             let teams = {}
 

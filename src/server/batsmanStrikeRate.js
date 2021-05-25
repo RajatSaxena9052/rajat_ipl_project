@@ -1,7 +1,11 @@
 function batsmanStrikeRate(matchesArray, deliveriesArray) {
-    if (matchesArray == undefined || matchesArray.length == 0 || Array.isArray(matchesArray) == false || deliveriesArray == undefined || deliveriesArray.length == 0 || Array.isArray(deliveriesArray) == false) {
+    if (matchesArray === undefined || matchesArray.length === 0) {
         return {}
-    } else {
+    }
+    else if (deliveriesArray == undefined || deliveriesArray.length == 0) {
+        return {}
+    }
+    else {
         let years = {}
 
         for (let matches of matchesArray) {

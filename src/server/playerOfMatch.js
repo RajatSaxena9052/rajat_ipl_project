@@ -1,5 +1,5 @@
 function PlayerOfMatch(matchesArray) {
-    if (matchesArray == undefined || matchesArray.length == 0 || Array.isArray(matchesArray) == false) {
+    if (matchesArray === undefined || matchesArray.length === 0) {
         return {}
     } else {
         let year = new Set()

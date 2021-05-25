@@ -1,5 +1,6 @@
 const csv = require("csvtojson")
 const fs = require('fs')
+
 const matches = "src/data/matches.csv"
 const deliveries = "src/data/deliveries.csv"
 
@@ -21,22 +22,24 @@ function main() {
                 .fromFile(deliveries)
                 .then((deliveries) => {
 
-                    let matchPlayedPerYear = matchesPlayedPerYear(matches)
-                    let matchWonPerTeam = matchesWonPerTeamPerYear(matches)
-                    let extraRuns = extraRunsConcededPerTeam2016(matches, deliveries)
-                    let tenEconomicPlayer = top10EconomicalBowlers2015(matches, deliveries)
-                    let wonTossAndMatch = teamsWonTossMatch(matches)
-                    let winnerOfPlayerOfMatch = playerOfMatch(matches)
-                    let strikeRate = batsmanStrikeRate(matches, deliveries)
-                    let playerDismissed = dismissedPlayer(deliveries)
-                    let superOverEconomy = superOver(deliveries)
+                    let calculatedValues = {
+                        matchPlayedPerYear: matchesPlayedPerYear(matches),
+                        matchWonPerTeam: matchesWonPerTeamPerYear(matches),
+                        extraRuns: extraRunsConcededPerTeam2016(matches, deliveries),
+                        tenEconomicPlayer: top10EconomicalBowlers2015(matches, deliveries),
+                        wonTossAndMatch: teamsWonTossMatch(matches),
+                        winnerOfPlayerOfMatch: playerOfMatch(matches),
+                        strikeRate: batsmanStrikeRate(matches, deliveries),
+                        playerDismissed: dismissedPlayer(deliveries),
+                        superOverEconomy: superOver(deliveries)
+                    }
 
-                    convertAndSave(matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEconomicPlayer, wonTossAndMatch, winnerOfPlayerOfMatch, strikeRate, playerDismissed, superOverEconomy)
+                    convertAndSave(calculatedValues)
                 })
         })
 }
 
-function convertAndSave(matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEconomicPlayer, wonTossAndMatch, winnerOfPlayerOfMatch, strikeRate, playerDismissed, superOverEconomy) {
+function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEconomicPlayer, wonTossAndMatch, winnerOfPlayerOfMatch, strikeRate, playerDismissed, superOverEconomy }) {
 
     fs.writeFile("src/public/output/matchesPerYear.json", JSON.stringify(matchPlayedPerYear), 'utf8', (error) => {
         if (error) {
