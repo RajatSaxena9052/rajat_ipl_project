@@ -9,10 +9,10 @@ function teamsWonTossMatch(matchArray) {
 
         let teamsWon = {}
 
-        for (var team of teams) {
+        for (let team of teams) {
             let count = 0
 
-            for (var matchId of matchArray) {
+            for (let matchId of matchArray) {
                 if (matchId["toss_winner"] == team && matchId["winner"] == team) {
                     count++
                 }

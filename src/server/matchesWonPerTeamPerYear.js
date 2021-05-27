@@ -14,7 +14,7 @@ function matchesWonPerTeamPerYear(matchesArray) {
 
         }
 
-        for (var season in matchesWonPerTeamAndYear) {
+        for (let season in matchesWonPerTeamAndYear) {
             let teams = {}
 
             matchesWonPerTeamAndYear[season].forEach(s => teams[s] = (teams[s] || 0) + 1)

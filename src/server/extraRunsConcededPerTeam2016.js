@@ -2,7 +2,7 @@ function extraRunsConcededPerTeam2016(matchArray, deliveriesArray) {
     if (matchArray !== undefined && deliveriesArray !== undefined) {
         let matchId = new Set()
 
-        for (var match of matchArray) {
+        for (let match of matchArray) {
             if (match["season"] == 2016) {
                 matchId.add(match["id"])
             }

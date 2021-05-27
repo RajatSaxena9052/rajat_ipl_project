@@ -2,7 +2,7 @@ function top10EconomicalBowlers2015(matchArray, deliveriesArray) {
     if (matchArray !== undefined && deliveriesArray !== undefined) {
         let allMatchId = new Set();
 
-        for (var match of matchArray) {
+        for (let match of matchArray) {
             if (match["season"] == 2015) {
                 allMatchId.add(match["id"]);
             }
@@ -10,8 +10,8 @@ function top10EconomicalBowlers2015(matchArray, deliveriesArray) {
 
         let allBowlerName = new Set();
 
-        for (var id of allMatchId) {
-            for (var deliveries of deliveriesArray) {
+        for (let id of allMatchId) {
+            for (let deliveries of deliveriesArray) {
                 if (deliveries["match_id"] == id) {
                     allBowlerName.add(deliveries["bowler"]);
                 }
@@ -20,7 +20,7 @@ function top10EconomicalBowlers2015(matchArray, deliveriesArray) {
 
         let economy = {};
 
-        for (var bowler of allBowlerName) {
+        for (let bowler of allBowlerName) {
             let totalRuns = 0, bowls = 0;
 
             for (let deliveryId of deliveriesArray) {
