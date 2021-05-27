@@ -39,9 +39,9 @@ function main() {
         });
 }
 
-function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEconomicPlayer, wonTossAndMatch, winnerOfPlayerOfMatch, strikeRate, playerDismissed, superOverEconomy }) {
+function convertAndSave(calculatedValues) {
 
-    fs.writeFile("src/public/output/matchesPerYear.json", JSON.stringify(matchPlayedPerYear, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/matchesPerYear.json", JSON.stringify(calculatedValues.matchPlayedPerYear, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
@@ -49,7 +49,7 @@ function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEco
         }
     });
 
-    fs.writeFile("src/public/output/matchesWonPerTeam.json", JSON.stringify(matchWonPerTeam, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/matchesWonPerTeam.json", JSON.stringify(calculatedValues.matchWonPerTeam, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
@@ -57,7 +57,7 @@ function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEco
         }
     });
 
-    fs.writeFile("src/public/output/extraRuns2016.json", JSON.stringify(extraRuns, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/extraRuns2016.json", JSON.stringify(calculatedValues.extraRuns, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
@@ -65,7 +65,7 @@ function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEco
         }
     });
 
-    fs.writeFile("src/public/output/economicalBowlers2015.json", JSON.stringify(tenEconomicPlayer, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/economicalBowlers2015.json", JSON.stringify(calculatedValues.tenEconomicPlayer, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
@@ -73,7 +73,7 @@ function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEco
         }
     });
 
-    fs.writeFile("src/public/output/teamsWonTossMatch.json", JSON.stringify(wonTossAndMatch, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/teamsWonTossMatch.json", JSON.stringify(calculatedValues.wonTossAndMatch, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
@@ -81,7 +81,7 @@ function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEco
         }
     });
 
-    fs.writeFile("src/public/output/playerOfMatch.json", JSON.stringify(winnerOfPlayerOfMatch, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/playerOfMatch.json", JSON.stringify(calculatedValues.winnerOfPlayerOfMatch, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
@@ -89,7 +89,7 @@ function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEco
         }
     });
 
-    fs.writeFile("src/public/output/strikeRate.json", JSON.stringify(strikeRate, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/strikeRate.json", JSON.stringify(calculatedValues.strikeRate, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
@@ -97,7 +97,7 @@ function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEco
         }
     });
 
-    fs.writeFile("src/public/output/highestDismissedPlayer.json", JSON.stringify(playerDismissed, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/highestDismissedPlayer.json", JSON.stringify(calculatedValues.playerDismissed, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
@@ -105,7 +105,7 @@ function convertAndSave({ matchPlayedPerYear, matchWonPerTeam, extraRuns, tenEco
         }
     });
 
-    fs.writeFile("src/public/output/bestSuperOverBowler.json", JSON.stringify(superOverEconomy, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/bestSuperOverBowler.json", JSON.stringify(calculatedValues.superOverEconomy, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
