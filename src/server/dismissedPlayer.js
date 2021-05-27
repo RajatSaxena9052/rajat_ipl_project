@@ -1,17 +1,12 @@
 function dismissedPlayer(deliveriesArray) {
-    if (deliveriesArray === undefined || deliveriesArray.length === 0) {
-        return {}
-    }
-    else {
+    if (deliveriesArray !== undefined) {
         let playersDismissed = {}
 
         for (let deliveries of deliveriesArray) {
-
             let playerName = deliveries["player_dismissed"]
             let dismissedBy = deliveries["fielder"]
 
             if (playerName != "" && dismissedBy != "") {
-
                 if (playersDismissed[playerName] == undefined) {
                     playersDismissed[playerName] = 1
                 }
@@ -31,5 +26,6 @@ function dismissedPlayer(deliveriesArray) {
         }
 
     }
+    return {}
 }
 module.exports = dismissedPlayer

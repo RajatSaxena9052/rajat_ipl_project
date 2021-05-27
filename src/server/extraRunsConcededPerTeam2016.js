@@ -1,12 +1,7 @@
 function extraRunsConcededPerTeam2016(matchArray, deliveriesArray) {
-    if (matchArray === undefined || matchArray.length === 0) {
-        return {}
-    }
-    else if (deliveriesArray === undefined || deliveriesArray.length === 0) {
-        return {}
-    }
-    else {
+    if (matchArray !== undefined && deliveriesArray !== undefined) {
         let matchId = new Set()
+
         for (var match of matchArray) {
             if (match["season"] == 2016) {
                 matchId.add(match["id"])
@@ -18,16 +13,19 @@ function extraRunsConcededPerTeam2016(matchArray, deliveriesArray) {
         for (let id of matchId) {
             for (let deliveries of deliveriesArray) {
                 if (deliveries['match_id'] == id) {
+
                     if (extraRunsByTeams[deliveries['batting_team']] != undefined) {
                         extraRunsByTeams[deliveries['batting_team']] += parseInt(deliveries['extra_runs'])
                     } else {
                         extraRunsByTeams[deliveries['batting_team']] = parseInt(deliveries['extra_runs'])
                     }
-                }
 
+                }
             }
         }
+
         return extraRunsByTeams
     }
+    return {}
 }
 module.exports = extraRunsConcededPerTeam2016

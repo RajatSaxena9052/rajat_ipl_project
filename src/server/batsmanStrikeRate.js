@@ -1,11 +1,5 @@
 function batsmanStrikeRate(matchesArray, deliveriesArray) {
-    if (matchesArray === undefined || matchesArray.length === 0) {
-        return {}
-    }
-    else if (deliveriesArray == undefined || deliveriesArray.length == 0) {
-        return {}
-    }
-    else {
+    if (matchesArray != undefined && deliveriesArray != undefined) {
         let years = {}
 
         for (let matches of matchesArray) {
@@ -16,7 +10,6 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
                 years[year] = [matchId]
             } else {
                 years[year].push(matchId)
-
             }
         }
 
@@ -26,10 +19,10 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
 
             for (let deliveries of deliveriesArray) {
                 if (deliveries["match_id"] != id) {
-                    continue
+                    continue;
                 } else {
                     batsman[deliveries["batsman"]] = { "bowls": 0, "runs": 0 }
-                    break
+                    break;
                 }
             }
 
@@ -49,5 +42,6 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
 
         return years
     }
+    return {}
 }
 module.exports = batsmanStrikeRate

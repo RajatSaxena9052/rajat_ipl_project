@@ -1,7 +1,5 @@
 function PlayerOfMatch(matchesArray) {
-    if (matchesArray === undefined || matchesArray.length === 0) {
-        return {}
-    } else {
+    if (matchesArray !== undefined) {
         let year = new Set()
 
         for (let matches of matchesArray) {
@@ -14,6 +12,7 @@ function PlayerOfMatch(matchesArray) {
             let playerScore = {}
 
             for (let match of matchesArray) {
+
                 if (season == match["season"]) {
 
                     if (playerScore[match["player_of_match"]] == undefined) {
@@ -21,19 +20,28 @@ function PlayerOfMatch(matchesArray) {
                     } else {
                         playerScore[match["player_of_match"]] += 1
                     }
+
                 }
+
             }
 
             let maxValue = Math.max(...Object.values(playerScore))
 
             for (let player in playerScore) {
+
                 if (playerScore[player] === maxValue) {
                     topPerformer[season] = player
+
                     break
                 }
+
             }
+
         }
+
         return topPerformer
     }
+    return {}
+
 }
 module.exports = PlayerOfMatch

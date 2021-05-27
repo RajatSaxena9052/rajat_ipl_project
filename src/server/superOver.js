@@ -1,8 +1,5 @@
 function superOver(deliveriesArray) {
-    if (deliveriesArray === undefined || deliveriesArray.length === 0) {
-        return {}
-    }
-    else {
+    if (deliveriesArray !== undefined) {
         let superOverMatchPlayer = {}
 
         for (let delivery of deliveriesArray) {
@@ -18,7 +15,9 @@ function superOver(deliveriesArray) {
                     superOverMatchPlayer[superOverBowler]["runsGiven"] += parseInt(superOverRuns)
                     superOverMatchPlayer[superOverBowler]["bowls"] += 1
                 }
+
             }
+
         }
 
         let minimumEconomy = null, bestBowler = ""
@@ -33,12 +32,18 @@ function superOver(deliveriesArray) {
             }
             else if (minimumEconomy > calculatedEconomy) {
                 minimumEconomy = calculatedEconomy
-                bestBowler = { "bowlerName": bowler, "economy": minimumEconomy }
+
+                bestBowler = {
+                    "bowlerName": bowler,
+                    "economy": minimumEconomy
+                }
+
             }
         }
 
         return bestBowler
     }
 
+    return {}
 }
 module.exports = superOver

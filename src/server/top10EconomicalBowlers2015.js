@@ -1,47 +1,53 @@
 function top10EconomicalBowlers2015(matchArray, deliveriesArray) {
-    if (matchArray === undefined || matchArray.length === 0) {
-        return {}
-    }
-    else if (deliveriesArray == undefined || deliveriesArray.length == 0) {
-        return {}
-    }
-    else {
-        let matchId = new Set()
+    if (matchArray !== undefined && deliveriesArray !== undefined) {
+        let allMatchId = new Set();
+
         for (var match of matchArray) {
             if (match["season"] == 2015) {
-                matchId.add(match["id"])
+                allMatchId.add(match["id"]);
             }
         }
 
-        let bowlers = new Set()
-        for (var id of matchId) {
+        let allBowlerName = new Set();
+
+        for (var id of allMatchId) {
             for (var deliveries of deliveriesArray) {
                 if (deliveries["match_id"] == id) {
-                    bowlers.add(deliveries["bowler"])
+                    allBowlerName.add(deliveries["bowler"]);
                 }
             }
         }
 
-        let economy = {}
-        for (var bowler of bowlers) {
-            let totalRuns = 0, bowls = 0
+        let economy = {};
 
-            for (let i of deliveriesArray) {
-                if (matchId.has(i["match_id"]) === true && i["bowler"] == bowler) {
-                    totalRuns += parseInt(i["total_runs"])
-                    bowls++
+        for (var bowler of allBowlerName) {
+            let totalRuns = 0, bowls = 0;
+
+            for (let deliveryId of deliveriesArray) {
+                let matchId = deliveryId["match_id"]
+                let bowlerName = deliveryId["bowler"]
+
+                if (allMatchId.has(matchId) === true && bowlerName == bowler) {
+                    totalRuns += parseInt(deliveryId["total_runs"]);
+                    bowls++;
                 }
             }
-            bowls = bowls / 6
-            economy[bowler] = Math.floor(totalRuns / bowls)
+
+            bowls = bowls / 6;
+            economy[bowler] = Math.floor(totalRuns / bowls);
         }
 
-        economy = Object.entries(economy).sort((a, b) => a[1] - b[1]).slice(0, 10).reduce((a, c) => {
-            a[c[0]] = c[1]
-            return a
-        }, {})
+        let Economy = Object.entries(economy)
+            .sort((player1, player2) => player1[1] - player2[1])
+            .slice(0, 10)
+            .reduce((accumulator, playerName) => {
+                accumulator[playerName[0]] = playerName[1]
+                return accumulator
+            }, {});
 
-        return economy
+        return Economy;
     }
+
+    return {}
 }
 module.exports = top10EconomicalBowlers2015
