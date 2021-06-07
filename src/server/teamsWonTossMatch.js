@@ -1,30 +1,30 @@
 function teamsWonTossMatch(matchArray) {
     if (matchArray !== undefined) {
-        let teams = new Set()
+        let teams = new Set();
 
         for (let matchId of matchArray) {
-            teams.add(matchId["team1"])
-            teams.add(matchId["team2"])
+            teams.add(matchId["team1"]);
+            teams.add(matchId["team2"]);
         }
 
-        let teamsWon = {}
+        let teamsWon = {};
 
         for (let team of teams) {
-            let count = 0
+            let count = 0;
 
             for (let matchId of matchArray) {
                 if (matchId["toss_winner"] == team && matchId["winner"] == team) {
-                    count++
+                    count++;
                 }
             }
 
-            teamsWon[team] = count
+            teamsWon[team] = count;
         }
 
-        return teamsWon
+        return teamsWon;
     }
 
-    return {}
+    return {};
 
 }
-module.exports = teamsWonTossMatch
+module.exports = teamsWonTossMatch;
