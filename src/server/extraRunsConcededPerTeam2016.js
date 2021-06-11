@@ -15,12 +15,12 @@ function extraRunsConcededPerTeam2016(matchArray, deliveriesArray) {
         for (let id of matchId) {
             for (let deliveries of deliveriesArray) {
 
-                if (deliveries['match_id'] == id) {
+                if (deliveries['match_id'] === id) {
 
-                    if (extraRunsByTeams[deliveries['batting_team']] != undefined) {
-                        extraRunsByTeams[deliveries['batting_team']] += parseInt(deliveries['extra_runs']);
+                    if (extraRunsByTeams[deliveries['bowling_team']] != undefined) {
+                        extraRunsByTeams[deliveries['bowling_team']] += parseInt(deliveries['extra_runs']);
                     } else {
-                        extraRunsByTeams[deliveries['batting_team']] = parseInt(deliveries['extra_runs']);
+                        extraRunsByTeams[deliveries['bowling_team']] = parseInt(deliveries['extra_runs']);
                     }
 
                 }
